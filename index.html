@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+
+        <title>Predsjednički izbori 2024</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!--
+            Original 'style.css'
+            first passed through the prefixer: https://autoprefixer.github.io/
+            and after that through the minifier: https://www.minifier.org/
+        -->
+        <link rel="stylesheet" href="./static/style.min.css?bust=20241127">
+    </head>
+    <body class="cro_elections">
+        <div class="info_wrapper scrollable_wrapper">
+            <div class="general_info">
+                <h1>
+                    <span class="year">2024.</span>
+                    <span class="text">
+                        PREDSJEDNIČKI IZBORI
+                    </span>
+                </h1>
+            </div>
+            <div class="elections_results_wrapper">
+                <div class="arrow_left not_active"></div>
+                <div class="details scrollable_wrapper">
+                    <div id="election_results"></div>
+                </div>
+                <div class="arrow_right"></div>
+            </div>
+        </div>
+
+        <div class="data_wrapp">
+            <div class="live_blob">
+                <div class="live">
+                    <p>Rezultati uživo</p>
+                    <div class="blob"></div>
+                </div>
+                <p id="last_change">Stanje u: 12:00</p>
+                <p id="processed_votes">78,13% obrađenih BM</p>
+            </div>
+            <p class="pixell">Foto: Pixsell</p>
+        </div>
+
+        <div class="loader_wrapper">
+            <span class="loader"></span>
+        </div>
+
+        <template id="person_data_template">
+            <div class="person_data">
+                <div class="graph"><span></span></div>
+                <div class="results">
+                    <img src="" alt="ime Prezime" width="120" height="120">
+                    <p class="name">Ime Prezime</p>
+                    <p class="votes">Broj glasova: 543.257</p>
+                    <p class="percent">50.12%</p>
+                </div>
+            </div>
+        </template>
+
+        <!--
+            Original 'main.js'
+            passed through the minifier: https://www.digitalocean.com/community/tools/minify
+            with default options included.
+        -->
+        <script src="./static/main.min.js?bust=20241127"></script>
+    </body>
+</html>
