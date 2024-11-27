@@ -27,6 +27,8 @@ function hexToRgba(hex) {
 }
 
 function isInViewport(el) {
+    if (!el) return false;
+
     const {
         left, right
     } = el.getBoundingClientRect();
@@ -80,6 +82,8 @@ function setScrollLogic() {
     const arrowRight = document.querySelector('.arrow_right');
     const electionResultsWrapper = resultsWrapper.parentNode;
 
+    if (!arrowLeft || !arrowRight) return;
+
     if (electionResultsWrapper.offsetWidth >= electionResultsWrapper.scrollWidth) {
         arrowLeft.classList.add('remove');
         arrowRight.classList.add('remove');
@@ -90,9 +94,6 @@ function setScrollLogic() {
         arrowRight.classList.remove('remove');
     }
 
-    const firstItem = resultsWrapper.querySelector('.person_data:first-child');
-    const lastItem = resultsWrapper.querySelector('.person_data:last-child');
-
     arrowRight.addEventListener('click', () => {
         scrollHorizontally(electionResultsWrapper, 'right');
     });
@@ -100,6 +101,9 @@ function setScrollLogic() {
     arrowLeft.addEventListener('click', () => {
         scrollHorizontally(electionResultsWrapper, 'left');
     });
+
+    const firstItem = resultsWrapper.querySelector('.person_data:first-child');
+    const lastItem = resultsWrapper.querySelector('.person_data:last-child');
 
     electionResultsWrapper.addEventListener('scroll', debounce(() => {
         if (window.isInViewport(firstItem)) {
@@ -162,7 +166,7 @@ function setCss() {
         document.documentElement.style.setProperty('--fontDefault', 'var(--fontVL)');
         document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitleVL)');
         document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightDefaultVL)');
-    }
+    } else console.info('[Election Widget] The font is not adjusted because the portal is not recognized.');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
