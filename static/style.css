@@ -74,10 +74,10 @@ img {
 }
 
 @font-face {
-    font-family: 'TazRegular';
-    src: local('TazWt05-Regular'),
-        url('https://www.24sata.hr/static/fonts/TazWt05-Regular.woff2') format('woff2'),
-        url('https://www.24sata.hr/static/fonts/TazWt05-Regular.woff') format('woff');
+    font-family: 'TazBold';
+    src: local('TazWt07-Bold'),
+        url('https://www.24sata.hr/static/fonts/TazWt07-Bold.woff2') format('woff2'),
+        url('https://www.24sata.hr/static/fonts/TazWt07-Bold.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -91,10 +91,10 @@ img {
     --darkGreen: #2A9D8F;
     --black: #000000;
     --opacity: .5;
-    --font24sata: normal 400 100% 'TazRegular', sans-serif;
+    --font24sata: normal 400 100% 'TazBold', sans-serif;
     --fontVL: normal 400 100% 'Roboto', sans-serif;
     --fontDefault: normal 400 100% 'Roboto Condensed', sans-serif;
-    --fontTitle24sata: normal 400 100% 'TazRegular', sans-serif;
+    --fontTitle24sata: normal 400 100% 'TazBold', sans-serif;
     --fontTitleVL: normal 400 100% 'Roboto Serif', serif;
     --fontTitleDefault: normal 400 100% 'Roboto Condensed', sans-serif;
     --titleFontWeightDefault24sata: 900;
