@@ -21,23 +21,9 @@ function hexToRgba(hex) {
 
         c = `0x${c.join('')}`;
         return `rgba(${[(c>>16)&255, (c>>8)&255, c&255].join(',')},0.1)`;
-    } else console.error('[Election Widget] Bad Hex');
-}
-
-function debounce(fn, delay) {
-    let timer = null;
-
-    // eslint-disable-next-line func-names
-    return function () {
-        const context = this;
-        // eslint-disable-next-line prefer-rest-params
-        const args = arguments;
-
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            fn.apply(context, args);
-        }, delay);
-    };
+    } else {
+        console.error(`[Election Widget] It was not possible to create an rgba color because the hex color '${hex}' is not valid`);
+    }
 }
 
 function isInViewport(el) {
@@ -45,9 +31,10 @@ function isInViewport(el) {
         left, right
     } = el.getBoundingClientRect();
     const { innerWidth } = window;
-
-    // the 'magic number' 37 is obtained by adding the margin
-    // and the space occupied by the navigation arrows
+    /**
+     * the 'magic number' 37 is obtained by adding the margin
+     * and the space occupied by the navigation arrows
+     */
     return (left - 37) >= 0 && (right + 37) <= innerWidth;
 }
 
@@ -68,6 +55,20 @@ function scrollHorizontally(element, direction) {
             window.clearInterval(slideTimer);
         }
     }, 25);
+}
+
+function debounce(fn, delay) {
+    let timer = null;
+
+    return function () {
+        const context = this;
+        const args = arguments;
+
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(context, args);
+        }, delay);
+    };
 }
 
 function setScrollLogic() {
@@ -150,14 +151,29 @@ function placeDataInHtml() {
     resultsElement.appendChild(fragment);
 }
 
-window.addEventListener('resize', window.debounce(() => {
-    setScrollLogic();
-}, 200));
+function setCss() {
+    const queryParam = (new URLSearchParams(window.location.search)).get('portal');
+
+    if (queryParam === '24sata') {
+        document.documentElement.style.setProperty('--fontDefault', 'var(--font24sata)');
+        document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitle24sata)');
+        document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightDefault24sata)');
+    } else if (queryParam === 'VL') {
+        document.documentElement.style.setProperty('--fontDefault', 'var(--fontVL)');
+        document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitleVL)');
+        document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightDefaultVL)');
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    setCss()
     placeDataInHtml();
     setScrollLogic();
 
     const loaderWrapper = document.querySelector('.loader_wrapper');
     if (loaderWrapper) loaderWrapper.style.display = 'none';
 });
+
+window.addEventListener('resize', debounce(() => {
+    setScrollLogic();
+}, 200));
