@@ -205,7 +205,7 @@ img {
 
 h1 {
     font: var(--fontTitleDefault);
-    font-size: 30px;
+    font-size: 28px;
     font-weight: var(--titleFontWeightDefault);
     margin-bottom: 30px;
 }
@@ -331,6 +331,7 @@ h1 {
     h1 {
         text-align: center;
         line-height: 63px;
+        font-size: 30px;
     }
 
     .year,
