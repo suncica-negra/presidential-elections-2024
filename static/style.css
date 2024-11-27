@@ -27,7 +27,6 @@ ol {
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
   line-height: 1.5;
 }
 
@@ -50,10 +49,10 @@ a:not([class]) {
 }
 
 /* Make images easier to work with */
-img,
-picture {
+img {
   max-width: 100%;
   display: block;
+  width: 100%;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -96,18 +95,33 @@ textarea, select {
     border: 2px solid grey;
 }
 
+@font-face {
+    font-family: 'TazRegular';
+    src: local('TazWt05-Regular'),
+        url('https://www.24sata.hr/static/fonts/TazWt05-Regular.woff2') format('woff2'),
+        url('https://www.24sata.hr/static/fonts/TazWt05-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --lightGray: #FAFAFA;
     --red: #FF0000;
     --red1: rgb(255, 0, 0, 1);
     --green: #C5D84A;
     --darkGreen: #2A9D8F;
-    --darkBlue: #2E5491;
-    --blue: #3A86FF;
     --black: #000000;
-    --orange: #E76F51;
-    --yellow: #FFBE0B;
     --opacity: .5;
+    --font24sata: normal 400 100% 'TazRegular', sans-serif;
+    --fontVL: normal 400 100% 'Roboto', sans-serif;
+    --fontDefault: normal 400 100% 'Roboto Condensed', sans-serif;
+    --fontTitle24sata: normal 400 100% 'TazRegular', sans-serif;
+    --fontTitleVL: normal 400 100% 'Roboto Serif', serif;
+    --fontTitleDefault: normal 400 100% 'Roboto Condensed', sans-serif;
+    --titleFontWeightDefault24sata: 900;
+    --titleFontWeightDefaultVL: 500;
+    --titleFontWeightDefault: 900;
 }
 
 @keyframes rotation {
@@ -187,21 +201,18 @@ textarea, select {
 }
 
 .cro_elections {
-    margin: 16px;
+    padding: 16px;
     background-color: var(--lightGray);
-    font-family: "Roboto Condensed", sans-serif;
+    font: var(--fontDefault);
     font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: 400;
     letter-spacing: 0.5px;
     color: var(--black);
     overflow: hidden;
 }
 
 .data_wrapp {
-    position: absolute;
-    top: 360px;
-    width: calc(100% - 32px);
+    width: 100%;
+    margin-top: 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -210,6 +221,7 @@ textarea, select {
 .live_blob,
 .pixell {
     font-size: 14px;
+    line-height: 20px;
 }
 
 .blob {
@@ -231,8 +243,9 @@ textarea, select {
 }
 
 h1 {
+    font: var(--fontTitleDefault);
     font-size: 30px;
-    font-weight: 900;
+    font-weight: var(--titleFontWeightDefault);
     margin-bottom: 30px;
 }
 
@@ -267,6 +280,8 @@ h1 {
 .results img {
     background: url("profile_placeholder.webp"), var(--green);
     background-size: cover;
+    min-width: 120px;
+    object-fit: cover;
 }
 
 .arrow_left:after {
@@ -310,12 +325,14 @@ h1 {
 
 .name {
     font-size: 15px;
+    margin-top: 20px;
 }
 
 .votes {
     font-size: 13px;
     opacity: var(--opacity);
     white-space: nowrap;
+    margin-top: 5px;
 }
 
 .percent {
@@ -344,7 +361,10 @@ h1 {
 
 @media screen and (min-width: 900px) {
     .data_wrapp {
+        position: absolute;
         top: 16px;
+        width: calc(100% - 32px);
+        margin: 0;
     }
 
     h1 {
@@ -355,5 +375,9 @@ h1 {
     .year,
     .text {
         display: inline;
+    }
+
+    .results img {
+        min-width: 100px;
     }
 }
