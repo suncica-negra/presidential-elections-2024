@@ -156,17 +156,19 @@ function placeDataInHtml() {
 }
 
 function setCss() {
-    const queryParam = (new URLSearchParams(window.location.search)).get('portal');
+    const queryParam = ((new URLSearchParams(window.location.search)).get('portal'))?.toLowerCase();
 
     if (queryParam === '24sata') {
         document.documentElement.style.setProperty('--fontDefault', 'var(--font24sata)');
         document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitle24sata)');
-        document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightDefault24sata)');
-    } else if (queryParam === 'VL') {
+        document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeight24sata)');
+        document.documentElement.style.setProperty('--backgroundDefault', 'var(--background24sata)');
+    } else if (queryParam === 'vl') {
         document.documentElement.style.setProperty('--fontDefault', 'var(--fontVL)');
         document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitleVL)');
-        document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightDefaultVL)');
-    } else console.info('[Election Widget] The font is not adjusted because the portal is not recognized.');
+        document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightVL)');
+        document.documentElement.style.setProperty('--backgroundDefault', 'var(--backgroundVL)');
+    } else console.info(`[Election Widget] The font and color are not adjusted because the portal '${queryParam}' is not recognized.`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
