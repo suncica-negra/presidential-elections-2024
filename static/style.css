@@ -313,6 +313,7 @@ h1 {
 
 .not_active {
     opacity: .2;
+    pointer-events: none;
 }
 
 .remove {
