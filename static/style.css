@@ -232,6 +232,7 @@ h1 {
 
 .person_data {
     display: flex;
+    flex: 1 1 0;
 }
 
 .details {
@@ -240,8 +241,14 @@ h1 {
     width: 100%;
 }
 
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .results img {
-    background: url("profile_placeholder.webp"), var(--green);
+    background: url("./images/profile_placeholder.webp"), var(--green);
     background-size: cover;
     min-width: 120px;
     object-fit: cover;
