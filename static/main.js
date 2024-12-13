@@ -22,7 +22,7 @@ function hexToRgba(hex) {
         c = `0x${c.join('')}`;
         return `rgba(${[(c>>16)&255, (c>>8)&255, c&255].join(',')},0.1)`;
     } else {
-        console.error(`[Election Widget] It was not possible to create an rgba color because the hex color '${hex}' is not valid`);
+        console.error(`[Elections Widget] It was not possible to create an rgba color because the hex color '${hex}' is not valid`);
     }
 }
 
@@ -127,9 +127,21 @@ function placeDataInHtml() {
 
     if (!template) return;
 
+    const candidatesImages = ['bulj', 'jonjic', 'kartelo', 'kekin', 'lozo', 'milanovic', 'primorac', 'selak'];
+    const candidatesNames = {
+        'bulj': 'Miro Bulj',
+        'jonjic': 'Tomislav Jonjić',
+        'kartelo': 'Niko Tokić Kartelo',
+        'kekin': 'Ivana Kekin',
+        'lozo': 'Branka Lozo',
+        'milanovic': 'Zoran Milanović',
+        'primorac': 'Dragan Primorac',
+        'selak': 'Marija Selak Raspudić'
+    };
+
     const fragment = new DocumentFragment();
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 8; i++) {
         const templateClone = template.content.cloneNode(true);
         const percentWrapper = templateClone.querySelector('.percent');
         const percent = (Math.random() * 100).toFixed(2);
@@ -147,6 +159,14 @@ function placeDataInHtml() {
 
         const img = templateClone.querySelector('img');
         img.style.backgroundColor = graphColor;
+        img.style.backgroundImage = 'url()';
+        const candidateImage = candidatesImages[i];
+        const candidateName = candidatesNames[candidatesImages[i]]
+        img.src = `./static/images/${candidateImage}.png`;
+        img.alt = candidateName;
+
+        const name = templateClone.querySelector('.name');
+        name.innerText = candidateName;
 
         fragment.appendChild(templateClone);
     }
@@ -168,7 +188,7 @@ function setCss() {
         document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitleVL)');
         document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightVL)');
         document.documentElement.style.setProperty('--backgroundDefault', 'var(--backgroundVL)');
-    } else console.info(`[Election Widget] The font and color are not adjusted because the portal '${queryParam}' is not recognized.`);
+    } else console.info(`[Elections Widget] The font and color are not adjusted because the portal '${queryParam}' is not recognized.`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
