@@ -233,12 +233,14 @@ h1 {
 .person_data {
     display: flex;
     flex: 1 1 0;
+    scroll-snap-align: start;
 }
 
 .details {
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
+    scroll-snap-type: x mandatory;
 }
 
 .results {
