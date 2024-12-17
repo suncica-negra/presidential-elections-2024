@@ -40,25 +40,6 @@ function isInViewport(el) {
     return (left - 37) >= 0 && (right + 37) <= innerWidth;
 }
 
-function scrollHorizontally(element, direction) {
-    let scrollAmount = 0;
-    const step = 10;
-
-    var slideTimer = setInterval(() =>{
-        if (direction == 'left') {
-            element.scrollLeft -= step;
-        } else {
-            element.scrollLeft += step;
-        }
-
-        scrollAmount += step;
-
-        if (scrollAmount >= 100) {
-            window.clearInterval(slideTimer);
-        }
-    }, 25);
-}
-
 function debounce(fn, delay) {
     let timer = null;
 
@@ -71,6 +52,13 @@ function debounce(fn, delay) {
             fn.apply(context, args);
         }, delay);
     };
+}
+
+function scrollWidgetElement (wrapper, itemWidth) {
+    wrapper.scrollBy({
+        left: itemWidth,
+        behavior: 'smooth'
+    });
 }
 
 function setScrollLogic() {
@@ -94,13 +82,30 @@ function setScrollLogic() {
         arrowRight.classList.remove('remove');
     }
 
-    arrowRight.addEventListener('click', () => {
-        scrollHorizontally(electionResultsWrapper, 'right');
-    });
+    const personDataItem = resultsWrapper.querySelector('.person_data');
+    if (personDataItem) {
+        /**
+         * In order for the scrolling to be for exactly one candidate,
+         * 16 should be added, which is the space between the cards.
+        */
+        const itemWidth = (Math.round((personDataItem.getBoundingClientRect().width + Number.EPSILON) * 100) / 100) + 16;
 
-    arrowLeft.addEventListener('click', () => {
-        scrollHorizontally(electionResultsWrapper, 'left');
-    });
+        arrowRight.addEventListener('click', () => {
+            scrollWidgetElement(electionResultsWrapper, itemWidth);
+        });
+
+        arrowLeft.addEventListener('click', () => {
+            scrollWidgetElement(electionResultsWrapper, -itemWidth);
+        });
+
+        document.querySelector('.cro_elections')?.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                scrollWidgetElement(electionResultsWrapper, -itemWidth);
+            } else if (e.key === 'ArrowRight') {
+                scrollWidgetElement(electionResultsWrapper, itemWidth);
+            }
+        });
+    }
 
     const firstItem = resultsWrapper.querySelector('.person_data:first-child');
     const lastItem = resultsWrapper.querySelector('.person_data:last-child');
