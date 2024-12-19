@@ -46,31 +46,12 @@ img {
 }
 
 .scrollable_wrapper {
-    scrollbar-width: thin; /* for Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
-    background-color: white;
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: white;
-}
-
-::-webkit-scrollbar-track:hover {
-    background-color: grey;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.13);
-    border-radius: 16px;
-    border: 3px solid white;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.23);
-    border: 2px solid grey;
+    display: none;
 }
 
 @font-face {
