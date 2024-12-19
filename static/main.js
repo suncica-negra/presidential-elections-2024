@@ -158,7 +158,7 @@ function placeDataInHtml() {
         graph.style.backgroundColor = graphColor;
 
         const graphSpan = templateClone.querySelector('span');
-        const percentInPixel = (percent / 100) * 204;
+        const percentInPixel = (percent / 100) * 253;
         graphSpan.style.height = `${percentInPixel}px`;
         graphSpan.style.backgroundColor = graphSpanColor;
 
@@ -167,7 +167,7 @@ function placeDataInHtml() {
         img.style.backgroundImage = 'url()';
         const candidateImage = candidatesImages[i];
         const candidateName = candidatesNames[candidatesImages[i]]
-        img.src = `./static/images/${candidateImage}.webp`;
+        img.src = `./static/images/${candidateImage}.png`;
         img.alt = candidateName;
 
         const name = templateClone.querySelector('.name');
