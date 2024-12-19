@@ -232,8 +232,8 @@ h1 {
 
 .person_data {
     display: flex;
-    flex: 1 1 0;
     scroll-snap-align: start;
+    width: 157px;
 }
 
 .details {
@@ -283,6 +283,7 @@ h1 {
 
 .graph {
     width: 10px;
+    min-width: 10px;
     height: 100%;
     background-color: var(--green);
     margin-right: 10px;
@@ -304,7 +305,6 @@ h1 {
 .votes {
     font-size: 13px;
     opacity: var(--opacity);
-    white-space: nowrap;
     margin-top: 5px;
 }
 
