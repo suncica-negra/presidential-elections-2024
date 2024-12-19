@@ -167,7 +167,7 @@ function placeDataInHtml() {
         img.style.backgroundImage = 'url()';
         const candidateImage = candidatesImages[i];
         const candidateName = candidatesNames[candidatesImages[i]]
-        img.src = `./static/images/${candidateImage}.png`;
+        img.src = `./static/images/${candidateImage}.webp`;
         img.alt = candidateName;
 
         const name = templateClone.querySelector('.name');
