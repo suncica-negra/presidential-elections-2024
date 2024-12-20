@@ -55,10 +55,20 @@ img {
 }
 
 @font-face {
-    font-family: 'TazBold';
+    font-family: 'TazBlack';
     src: local('TazWt07-Bold'),
-        url('./fonts/TazWt07-Bold.woff2') format('woff2'),
-        url('./fonts/TazWt07-Bold.woff') format('woff');
+        url('./fonts/TazWt09-Black.woff2') format('woff2'),
+        url('./fonts/TazWt09-Black.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Taz';
+    src: local('TazWt05-Regular'),
+        url('./fonts/TazWt05-Regular.woff2') format('woff2'),
+        url('./fonts/TazWt05-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -74,15 +84,18 @@ img {
     --darkGreen: #2A9D8F;
     --black: #000000;
     --opacity: .5;
-    --font24sata: normal 400 100% 'TazBold', sans-serif;
+    --font24sata: normal 400 100% 'TazRegular', sans-serif;
     --fontVL: normal 400 100% 'Roboto', sans-serif;
     --fontDefault: normal 400 100% 'Roboto Condensed', sans-serif;
-    --fontTitle24sata: normal 400 100% 'TazBold', sans-serif;
+    --fontTitle24sata: normal 400 100% 'TazBlack', sans-serif;
     --fontTitleVL: normal 400 100% 'Roboto Serif', serif;
     --fontTitleDefault: normal 400 100% 'Roboto Condensed', sans-serif;
     --titleFontWeight24sata: 900;
-    --titleFontWeightVL: 500;
+    --titleFontWeightVL: 100;
     --titleFontWeightDefault: 900;
+    --titleFontSize24sata: 32px;
+    --titleFontSizeVL: 25px;
+    --titleFontSizeDefault: 32px;
 }
 
 @keyframes rotation {
@@ -183,12 +196,12 @@ img {
     display: flex;
     align-items: center;
     color: var(--red);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 h1 {
     font: var(--fontTitleDefault);
-    font-size: 27px;
+    font-size: var(--titleFontSizeDefault);
     font-weight: var(--titleFontWeightDefault);
     margin-bottom: 30px;
 }
@@ -215,6 +228,7 @@ h1 {
     display: flex;
     scroll-snap-align: start;
     width: 157px;
+    margin-bottom: 3px;
 }
 
 .details {
@@ -290,6 +304,7 @@ h1 {
 }
 
 .percent {
+    font: var(--fontTitleDefault);
     font-size: 30px;
     line-height: 22px;
     font-weight: 600;
