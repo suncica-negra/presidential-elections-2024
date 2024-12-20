@@ -188,11 +188,13 @@ function setCss() {
         document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitle24sata)');
         document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeight24sata)');
         document.documentElement.style.setProperty('--backgroundDefault', 'var(--background24sata)');
+        document.documentElement.style.setProperty('--titleFontSizeDefault', 'var(--titleFontSize24sata)');
     } else if (queryParam === 'vl') {
         document.documentElement.style.setProperty('--fontDefault', 'var(--fontVL)');
         document.documentElement.style.setProperty('--fontTitleDefault', 'var(--fontTitleVL)');
         document.documentElement.style.setProperty('--titleFontWeightDefault', 'var(--titleFontWeightVL)');
         document.documentElement.style.setProperty('--backgroundDefault', 'var(--backgroundVL)');
+        document.documentElement.style.setProperty('--titleFontSizeDefault', 'var(--titleFontSizeVL)');
     } else console.info(`[Elections Widget] The font and color are not adjusted because the portal '${queryParam}' is not recognized.`);
 }
 
