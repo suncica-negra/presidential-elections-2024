@@ -166,7 +166,7 @@ function placeDataInHtml() {
         img.style.backgroundColor = graphColor;
         img.style.backgroundImage = 'url()';
         const candidateImage = candidatesImages[i];
-        const candidateName = candidatesNames[candidatesImages[i]]
+        const candidateName = candidatesNames[candidateImage]
         img.src = `./static/images/${candidateImage}.png`;
         img.alt = candidateName;
 
