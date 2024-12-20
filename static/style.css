@@ -90,8 +90,14 @@ img {
     --fontTitle24sata: normal 400 100% 'TazBlack', sans-serif;
     --fontTitleVL: normal 400 100% 'Roboto Serif', serif;
     --fontTitleDefault: normal 400 100% 'Roboto Condensed', sans-serif;
-    --titleFontWeight24sata: 900;
-    --titleFontWeightVL: 100;
+    --fontPercent24sata: normal 400 100% 'TazBlack', sans-serif;
+    --fontPercentVL: normal 400 100% 'Roboto', sans-serif;
+    --fontPercentDefault: normal 400 100% 'Roboto Condensed', sans-serif;
+    --percentFontWeight24sata: 400;
+    --percentFontWeightVL: 800;
+    --percentFontWeightDefault: 900;
+    --titleFontWeight24sata: 400;
+    --titleFontWeightVL: 500;
     --titleFontWeightDefault: 900;
     --titleFontSize24sata: 32px;
     --titleFontSizeVL: 25px;
@@ -218,6 +224,10 @@ h1 {
     opacity: var(--opacity);
 }
 
+#processed_votes span {
+    font-weight: 600;
+}
+
 #election_results {
     display: flex;
     gap: 16px;
@@ -304,10 +314,10 @@ h1 {
 }
 
 .percent {
-    font: var(--fontTitleDefault);
+    font: var(--fontPercentDefault);
+    font-weight: var(--percentFontWeightDefault);
     font-size: 30px;
     line-height: 22px;
-    font-weight: 600;
     margin-top: 20px;
 }
 .name,
