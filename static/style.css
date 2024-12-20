@@ -57,8 +57,8 @@ img {
 @font-face {
     font-family: 'TazBold';
     src: local('TazWt07-Bold'),
-        url('https://www.24sata.hr/static/fonts/TazWt07-Bold.woff2') format('woff2'),
-        url('https://www.24sata.hr/static/fonts/TazWt07-Bold.woff') format('woff');
+        url('./fonts/TazWt07-Bold.woff2') format('woff2'),
+        url('./fonts/TazWt07-Bold.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
